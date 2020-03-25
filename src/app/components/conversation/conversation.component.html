@@ -1,0 +1,15 @@
+<p>This is User {{connectedUserId}} talking to User {{user2Id}}</p>
+
+<hr>
+
+
+<div *ngFor="let message of previousmessages">{{message.content}}</div>
+
+<hr>
+
+<div *ngIf="otherIsTyping" [@simpleFadeAnimation]="'in'">Other is Typing</div>
+<hr>
+
+<input type="text" [(ngModel)]="message.content" (keyup)="$event.keyCode == 13 && sendMessage()" (input)=updateTyping()>
+
+<button (click)=sendMessage()>Send</button>
